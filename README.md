@@ -53,6 +53,7 @@ To run Echidna property test , run the command below
 
 You should the result below, that show that the est fail , and the call that make it fail 
 [result ](./img/echidna-prop.png)
+<img src="./img/echidna-prop.png" alt="Mon Image" title="Un titre optionnel" />
 
 
 
