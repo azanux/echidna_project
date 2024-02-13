@@ -1,66 +1,58 @@
-## Foundry
+# Echdnia Test
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Installtion with docker 
 
-Foundry consists of:
-
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
+Run the command below
+```bash
+docker run -it -v "$PWD":/share trailofbits/eth-security-toolbox
+```
+Go to the repertory /share/
+```bash
+ethsec@579fe7a15cb0:/share$ 
 ```
 
-### Test
+## Test Echidna with property mode
 
-```shell
-$ forge test
+We will test Counter.sol Contract
+```javascript
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.13;
+
+contract Counter {
+    uint256 public number;
+
+    function setNumber(uint256 newNumber) public {
+        number = newNumber;
+    }
+
+    function increment() public {
+        number++;
+    }
+}
 ```
 
-### Format
+Create the Echidna test file
+```javascript
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.13;
 
-```shell
-$ forge fmt
+import {Counter} from "../src/Counter.sol";
+
+contract TestCounter is Counter {
+
+    function echidna_check_number() public view returns(bool) {
+        return (number >= 0 && number <= 100);
+    }
+}
 ```
 
-### Gas Snapshots
+To run Echidna property test , run the command below
+```bash
+ echidna ./test/TestCounter.sol --contract TestCounter
+ ```
 
-```shell
-$ forge snapshot
-```
+You should the result below, that show that the est fail , and the call that make it fail 
+[result ](./img/echidna-prop.png)
 
-### Anvil
 
-```shell
-$ anvil
-```
 
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
