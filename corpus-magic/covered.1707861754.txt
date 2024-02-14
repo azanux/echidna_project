@@ -1,0 +1,21 @@
+/share/test/Magic.sol
+  1 |     | // SPDX-License-Identifier: UNLICENSED
+  2 |     | pragma solidity ^0.8.13;
+  3 |     | 
+  4 | *r  | contract Magic {
+  5 |     |     bool value_found = false;
+  6 |     | 
+  7 | *   |     function magic(uint256 magic_1, uint256 magic_2, uint256 magic_3, uint256 magic_4) public {
+  8 | *r  |         require(magic_1 == 42);
+  9 | *r  |         require(magic_2 == 129);
+ 10 | *r  |         require(magic_3 == magic_4 + 333);
+ 11 |     |         value_found = true;
+ 12 |     |         return;
+ 13 |     |     }
+ 14 |     | 
+ 15 |     |     function echidna_magic_values() public view returns (bool) {
+ 16 |     |         return !value_found;
+ 17 |     |     }
+ 18 |     | }
+ 19 |     | 
+

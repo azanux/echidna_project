@@ -1,0 +1,25 @@
+<style> code { white-space: pre-wrap; display: block; background-color: #eee; }.executed { background-color: #afa; }.reverted { background-color: #ffa; }.unexecuted { background-color: #faa; }.neutral { background-color: #eee; }</style><b>/share/test/Magic.sol</b>
+<code>
+  1 |     | <span class='neutral'>// SPDX-License-Identifier: UNLICENSED</span>
+  2 |     | <span class='neutral'>pragma solidity ^0.8.13;</span>
+  3 |     | <span class='neutral'></span>
+  4 | *r  | <span class='executed'>contract Magic {</span>
+  5 |     | <span class='unexecuted'>    bool value_found = false;</span>
+  6 |     | <span class='neutral'></span>
+  7 | *   | <span class='executed'>    function magic(uint256 magic_1, uint256 magic_2, uint256 magic_3, uint256 magic_4) public {</span>
+  8 | *r  | <span class='executed'>        require(magic_1 == 42);</span>
+  9 | *r  | <span class='executed'>        require(magic_2 == 129);</span>
+ 10 | *r  | <span class='executed'>        require(magic_3 == magic_4 + 333);</span>
+ 11 |     | <span class='unexecuted'>        value_found = true;</span>
+ 12 |     | <span class='neutral'>        return;</span>
+ 13 |     | <span class='neutral'>    }</span>
+ 14 |     | <span class='neutral'></span>
+ 15 |     | <span class='unexecuted'>    function echidna_magic_values() public view returns (bool) {</span>
+ 16 |     | <span class='unexecuted'>        return !value_found;</span>
+ 17 |     | <span class='neutral'>    }</span>
+ 18 |     | <span class='neutral'>}</span>
+ 19 |     | <span class='neutral'></span>
+
+</code>
+<br />
+
